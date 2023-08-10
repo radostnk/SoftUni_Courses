@@ -22,6 +22,7 @@ public class TennisRanklist {
                 tournamentPoints += 720;
             }
         }
+
         double averagePoints = Math.floor(tournamentPoints * 1.0 / tournamentsNum);
         double winsP = winsCounter * 1.0 / tournamentsNum * 100;
 

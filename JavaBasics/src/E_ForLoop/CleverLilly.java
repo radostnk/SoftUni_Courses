@@ -21,6 +21,7 @@ public class CleverLilly {
                 toyCounter ++;
             }
         }
+
         bdMoney += toyCounter * toyPrice;
         double diff = Math.abs(bdMoney - washingMachinePrice);
 
