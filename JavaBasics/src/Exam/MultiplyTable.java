@@ -24,8 +24,7 @@ public class MultiplyTable {
         int firstDigit = Integer.parseInt(first);
         int secondDigit = Integer.parseInt(second);
         int thirdDigit = Integer.parseInt(third);
-
-
+        
         for (int a = 1; a <= firstDigit; a++) {
             for (int b = 1; b <= secondDigit; b++) {
                 for (int c = 1; c <= thirdDigit; c++) {
