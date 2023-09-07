@@ -26,7 +26,7 @@ public class Crossfire {
             int colEnd = colToDestroy + radiusToDestroy;
 
             for (int curRow = rowStart; curRow <= rowEnd; curRow++) {
-                if (isInBounds(matrix, curRow, colToDestroy)) {
+                if (isInBounds(matrix, curRow, colToDestroy) && curRow != rowToDestroy) {
                     matrix.get(curRow).remove(colToDestroy);
                 }
             }
@@ -41,8 +41,10 @@ public class Crossfire {
             input = scan.nextLine();
         }
 
-        for (ArrayList<Integer> integers : matrix) {
-            integers.forEach(e -> System.out.printf("%d ", e));
+        for(List<Integer> integers : matrix){
+            for (Integer integer : integers) {
+                System.out.print(integer + " ");
+            }
             System.out.println();
         }
     }
@@ -52,7 +54,7 @@ public class Crossfire {
         ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
 
         for (int row = 0; row < rows; row++) {
-            matrix.add(new ArrayList<Integer>());
+            matrix.add(new ArrayList<>());
 
             for (int col = 0; col < cols; col++) {
                 matrix.get(row).add(counter++);
