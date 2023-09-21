@@ -4,8 +4,8 @@ import java.io.*;
 
 public class CopyBytes {
     public static void main(String[] args) {
-        try (FileInputStream fileInputStream = new FileInputStream("src/Resources/input.txt");
-             PrintWriter printWriter = new PrintWriter(new FileOutputStream("src/Resources/output2.txt"))) {
+        try (FileInputStream fileInputStream = new FileInputStream("src/Resources/inputL.txt");
+             PrintWriter printWriter = new PrintWriter(new FileOutputStream("src/Resources/outputL2.txt"))) {
 
             int curEl = fileInputStream.read();
             while (curEl >= 1) {

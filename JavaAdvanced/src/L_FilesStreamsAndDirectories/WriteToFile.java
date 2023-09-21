@@ -4,8 +4,8 @@ import java.io.*;
 
 public class WriteToFile {
     public static void main(String[] args) {
-        try (FileInputStream fileInputStream = new FileInputStream("src/Resources/input.txt");
-             FileOutputStream fileOutputStream = new FileOutputStream("src/Resources/output.txt")) {
+        try (FileInputStream fileInputStream = new FileInputStream("src/Resources/inputL.txt");
+             FileOutputStream fileOutputStream = new FileOutputStream("src/Resources/outputL1.txt")) {
 
             int el = fileInputStream.read();
 

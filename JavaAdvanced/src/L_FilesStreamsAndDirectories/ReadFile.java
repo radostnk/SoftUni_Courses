@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class ReadFile {
     public static void main(String[] args) {
-        try (FileInputStream fileInputStream = new FileInputStream("src/Resources/input.txt")) {
+        try (FileInputStream fileInputStream = new FileInputStream("src/Resources/inputL.txt")) {
 
             int curEl = fileInputStream.read();
             while (curEl >= 1) {
