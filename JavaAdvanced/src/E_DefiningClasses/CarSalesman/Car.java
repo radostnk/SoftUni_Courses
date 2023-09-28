@@ -84,11 +84,3 @@ public class Car {
         return sb.toString();
     }
 }
-
-//"{CarModel}:
-//{EngineModel}:
-//Power: {EnginePower}
-//Displacement: {EngineDisplacement} ***
-//Efficiency: {EngineEfficiency}
-//Weight: {CarWeight} ***
-//Color: {CarColor}"
