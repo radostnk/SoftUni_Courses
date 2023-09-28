@@ -1,33 +1,33 @@
 package E_DefiningClasses.CarSalesman;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 public class Engine {
     private String model;
     private int power;
-    private String displacement;
+    private int displacement;
     private String efficiency;
-    //displacements, and efficiency are option
-
 
     public Engine(String model, int power) {
         this.model = model;
         this.power = power;
-        this.displacement = "n/a";
+        this.displacement = 0;
         this.efficiency = "n/a";
     }
 
-    public Engine(String model, int power, String displacement) {
+    public Engine(String model, int power, int displacement) {
         this(model, power);
         this.displacement = displacement;
     }
 
-//    public Engine(String model, int power, String efficiency) {
-//        this(model, power);
-//        this.efficiency = efficiency;
-//    }
-
-    public Engine(String model, int power, String displacement, String efficiency) {
+    public Engine(String model, int power, String efficiency) {
         this(model, power);
-        this.displacement = displacement;
+        this.efficiency = efficiency;
+    }
+
+    public Engine(String model, int power, int displacement, String efficiency) {
+        this(model, power, displacement);
         this.efficiency = efficiency;
     }
 
@@ -47,11 +47,11 @@ public class Engine {
         this.power = power;
     }
 
-    public String getDisplacement() {
+    public int getDisplacement() {
         return displacement;
     }
 
-    public void setDisplacement(String displacement) {
+    public void setDisplacement(int displacement) {
         this.displacement = displacement;
     }
 
