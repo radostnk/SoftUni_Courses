@@ -1,4 +1,4 @@
-package L_Abstraction.PointInRectangle;
+package OOP.L_Abstraction.PointInRectangle;
 
 public class Point {
     private int x;

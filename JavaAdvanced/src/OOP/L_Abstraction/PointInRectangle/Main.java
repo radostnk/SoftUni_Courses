@@ -1,4 +1,4 @@
-package L_Abstraction.PointInRectangle;
+package OOP.L_Abstraction.PointInRectangle;
 
 import java.util.Arrays;
 import java.util.Scanner;

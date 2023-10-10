@@ -1,4 +1,4 @@
-package L_Abstraction.HotelReservation;
+package OOP.L_Abstraction.HotelReservation;
 
 import java.util.Scanner;
 
