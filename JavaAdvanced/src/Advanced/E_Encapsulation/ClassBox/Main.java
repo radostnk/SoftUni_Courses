@@ -11,9 +11,9 @@ public class Main {
 
         try {
             Box box = new Box(length, width, height);
-            System.out.printf("Surface Area - \n", box.calculateSurfaceArea());
-            System.out.printf("Lateral Surface Area - \n", box.calculateLateralSurfaceArea());
-            System.out.printf("Volume - \n", box.calculateVolume());
+            System.out.printf("Surface Area - %.2f\n", box.calculateSurfaceArea());
+            System.out.printf("Lateral Surface Area - %.2f\n", box.calculateLateralSurfaceArea());
+            System.out.printf("Volume - %.2f\n", box.calculateVolume());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
