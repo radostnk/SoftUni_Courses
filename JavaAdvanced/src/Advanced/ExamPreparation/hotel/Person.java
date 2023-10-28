@@ -52,6 +52,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("Person %s: %d, Age: %d, Hometown: %s", this.name, this.id, this.age, this.hometown);
+        return String.format("OOP.E_Inheritance.Person %s: %d, Age: %d, Hometown: %s", this.name, this.id, this.age, this.hometown);
     }
 }
