@@ -1,4 +1,4 @@
-package animals;
+package OOP.E_Inheritance.animals;
 
 import java.util.ArrayList;
 import java.util.Scanner;
