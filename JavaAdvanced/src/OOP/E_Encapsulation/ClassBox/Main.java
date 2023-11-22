@@ -1,4 +1,4 @@
-package ClassBox;
+package OOP.E_Encapsulation.ClassBox;
 
 import java.util.Scanner;
 

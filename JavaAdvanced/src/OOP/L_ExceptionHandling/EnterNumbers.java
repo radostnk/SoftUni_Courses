@@ -20,7 +20,7 @@ public class EnterNumbers {
                 start = curNum;
 
             } catch (NumberFormatException ignored) {
-                System.out.println("Invalid number!");
+                System.out.println("Invalid Number!");
 
             } catch (NumberNotInRangeException e) {
                 System.out.println(e.getMessage());
@@ -35,7 +35,7 @@ public class EnterNumbers {
         int num = Integer.parseInt(scan.nextLine());
 
         if (!(num > start && num < end)) {
-            throw new NumberNotInRangeException(String.format("Your Number is not in range %d - %d!", start, end));
+            throw new NumberNotInRangeException(String.format("Your number is not in range %d - %d!", start, end));
         }
 
         return num;

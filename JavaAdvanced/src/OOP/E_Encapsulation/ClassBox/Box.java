@@ -1,4 +1,4 @@
-package ClassBox;
+package OOP.E_Encapsulation.ClassBox;
 
 public class Box {
     private double length;
