@@ -1,2 +1,5 @@
-package L_UnitTesting.rpg_lab;public class Weapon {
+package L_UnitTesting.rpg_lab;
+
+public interface Weapon {
+    void attack(Target target);
 }

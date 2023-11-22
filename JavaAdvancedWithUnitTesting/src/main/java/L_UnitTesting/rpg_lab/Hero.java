@@ -1,12 +1,13 @@
 package L_UnitTesting.rpg_lab;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Hero {
 
     private String name;
     private int experience;
-    private Axe weapon;
+    private Weapon weapon;
 
     public Hero(String name) {
         this.name = name;
@@ -22,11 +23,11 @@ public class Hero {
         return this.experience;
     }
 
-    public Axe getWeapon() {
+    public Weapon getWeapon() {
         return this.weapon;
     }
 
-    public void attack(Dummy target) {
+    public void attack(Target target) {
         this.weapon.attack(target);
 
         if (target.isDead()) {
