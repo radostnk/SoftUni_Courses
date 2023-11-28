@@ -2,8 +2,8 @@ package bank_exam.entities.loan;
 
 public abstract class BaseLoan implements Loan {
 
-    protected int interestRate;
-    protected double amount;
+    private int interestRate;
+    private double amount;
 
     public BaseLoan(int interestRate, double amount) {
         this.interestRate = interestRate;

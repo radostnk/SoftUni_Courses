@@ -10,6 +10,6 @@ public class Adult extends BaseClient {
 
     @Override
     public void increase() {
-        this.interest = INITIAL_INTEREST + 2;
+        setInterest(getInterest() + 2);
     }
 }

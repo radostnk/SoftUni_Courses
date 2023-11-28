@@ -1,4 +1,4 @@
-package bank_for_test;
+package bank_test;
 
 public class Client {
     private String name;

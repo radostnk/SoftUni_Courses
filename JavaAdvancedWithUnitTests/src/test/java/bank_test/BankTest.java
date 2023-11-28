@@ -1,4 +1,4 @@
-package bank_for_test;
+package bank_test;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -7,15 +7,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import static bank_exam.common.ExceptionMessages.BANK_NAME_CANNOT_BE_NULL_OR_EMPTY;
+import static bank_exam.common.ExceptionMessages.NOT_ENOUGH_CAPACITY_FOR_CLIENT;
+
 public abstract class BaseBank implements Bank {
 
-    protected String name;
-    protected int capacity;
-    protected Collection<Loan> loans;
-    protected Collection<Client> clients;
+    private String name;
+    private int capacity;
+    private Collection<Loan> loans;
+    private Collection<Client> clients;
 
     public BaseBank(String name, int capacity) {
-        this.name = name;
+        this.setName(name);
         this.capacity = capacity;
         this.loans = new ArrayList<>();
         this.clients = new ArrayList<>();
@@ -28,8 +31,8 @@ public abstract class BaseBank implements Bank {
 
     @Override
     public void setName(String name) {
-        if (name == null || name.trim().isBlank()) {
-            throw new IllegalArgumentException("Bank name cannot be null or empty.");
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException(BANK_NAME_CANNOT_BE_NULL_OR_EMPTY);
         }
 
         this.name = name;
@@ -48,7 +51,7 @@ public abstract class BaseBank implements Bank {
     @Override
     public void addClient(Client client) {
         if (this.capacity <= clients.size()) {
-            throw new IllegalArgumentException("Not enough capacity for this client.");
+            throw new IllegalArgumentException(NOT_ENOUGH_CAPACITY_FOR_CLIENT);
         }
 
         clients.add(client);
@@ -94,7 +97,7 @@ public abstract class BaseBank implements Bank {
             sb.append("\n");
         }
 
-        sb.append(String.format("Loans: %d, Sum of interest rates: %d\n",
+        sb.append(String.format("Loans: %d, Sum of interest rates: %d",
                 loans.size(), this.sumOfInterestRates()));
 
         return sb.toString();

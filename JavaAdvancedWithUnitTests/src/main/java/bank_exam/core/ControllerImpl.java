@@ -11,23 +11,27 @@ import bank_exam.entities.loan.MortgageLoan;
 import bank_exam.entities.loan.StudentLoan;
 import bank_exam.repositories.LoanRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static bank_exam.common.ConstantMessages.*;
+import static bank_exam.common.ExceptionMessages.*;
 
 public class ControllerImpl implements Controller {
 
     private LoanRepository loanRepository;
-    private Collection<Bank> banks;
+    private Map<String, Bank> banks;
 
     public ControllerImpl() {
         this.loanRepository = new LoanRepository();
-        this.banks = new ArrayList<Bank>();
+        this.banks = new LinkedHashMap<>();
     }
 
     @Override
     public String addBank(String type, String name) {
 
-        Bank bank = null;
+        Bank bank;
 
         switch (type) {
             case "CentralBank":
@@ -39,17 +43,17 @@ public class ControllerImpl implements Controller {
                 break;
 
             default:
-                throw new IllegalArgumentException("Invalid bank type.");
+                throw new IllegalArgumentException(INVALID_BANK_TYPE);
         }
 
-        banks.add(bank);
-        return String.format("%s is successfully added.", type);
+        banks.put(name, bank);
+        return String.format(SUCCESSFULLY_ADDED_BANK_OR_LOAN_TYPE, type);
     }
 
     @Override
     public String addLoan(String type) {
 
-        Loan loan = null;
+        Loan loan;
 
         switch (type) {
             case "StudentLoan":
@@ -61,17 +65,17 @@ public class ControllerImpl implements Controller {
                 break;
 
             default:
-                throw new IllegalArgumentException("Invalid loan type.");
+                throw new IllegalArgumentException(INVALID_LOAN_TYPE);
         }
 
         loanRepository.addLoan(loan);
-        return String.format("%s is successfully added.", type);
+        return String.format(SUCCESSFULLY_ADDED_BANK_OR_LOAN_TYPE, type);
     }
 
     @Override
     public String returnedLoan(String bankName, String loanType) {
 
-       Bank bank = banks.stream().filter(b -> b.getName().equals(bankName)).findAny().get();
+       Bank bank = banks.get(bankName);
        Loan loan = null;
 
        if (loanType.equals("MortgageLoan")) {
@@ -87,17 +91,17 @@ public class ControllerImpl implements Controller {
 
        } else if (bank.getClass().getSimpleName().equals("CentralBank")
                 && loan.getClass().getSimpleName().equals("StudentLoan")) {
-            throw new IllegalArgumentException(String.format("Loan of type %s is missing.", loanType));
+            throw new IllegalArgumentException(String.format(NO_LOAN_FOUND, loanType));
         }
 
         bank.addLoan(loan);
-        return String.format("%s successfully added to %s.", loanType, bankName);
+        return String.format(SUCCESSFULLY_ADDED_CLIENT_OR_LOAN_TO_BANK, loanType, bankName);
     }
 
     @Override
     public String addClient(String bankName, String clientType, String clientName, String clientID, double income) {
-        Client client = null;
-        Bank bank = banks.stream().filter(b -> b.getName().equals(bankName)).findAny().get();
+        Client client;
+        Bank bank = banks.get(bankName);
 
         switch (clientType) {
             case "Student":
@@ -109,7 +113,7 @@ public class ControllerImpl implements Controller {
                 break;
 
             default:
-                throw new IllegalArgumentException("Invalid client type.");
+                throw new IllegalArgumentException(INVALID_CLIENT_TYPE);
         }
 
         if (bank.getClass().getSimpleName().equals("CentralBank")
@@ -121,17 +125,17 @@ public class ControllerImpl implements Controller {
             bank.addClient(client);
 
         } else {
-            return "Unsuitable bank.";
+            return UNSUITABLE_BANK;
         }
 
-        return String.format("%s successfully added to %s.", clientType, bankName);
+        return String.format(SUCCESSFULLY_ADDED_CLIENT_OR_LOAN_TO_BANK, clientType, bankName);
     }
 
     @Override
     public String finalCalculation(String bankName) {
         double sum = 0;
 
-        Bank bank = banks.stream().filter(b -> b.getName().equals(bankName)).findAny().get();
+        Bank bank = banks.get(bankName);
         Collection<Client> clients = bank.getClients();
         Collection<Loan> loans = bank.getLoans();
 
@@ -143,13 +147,13 @@ public class ControllerImpl implements Controller {
             sum += loan.getAmount();
         }
 
-        return String.format("The funds of bank %s is %.2f.", bankName, sum);
+        return String.format(FUNDS_BANK, bankName, sum);
     }
 
     @Override
     public String getStatistics() {
         StringBuilder sb = new StringBuilder();
-        banks.forEach(b -> sb.append(b.getStatistics()));
+        banks.values().forEach(b -> sb.append(b.getStatistics()));
         return sb.toString();
     }
 }

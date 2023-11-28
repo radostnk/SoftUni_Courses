@@ -10,6 +10,6 @@ public class Student extends BaseClient {
 
     @Override
     public void increase() {
-        this.interest = INITIAL_INTEREST + 1;
+        setInterest(getInterest() + 1);
     }
 }
