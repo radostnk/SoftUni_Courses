@@ -1,4 +1,4 @@
-package farmville;
+package farmville_test;
 
 import java.util.ArrayList;
 import java.util.Collection;

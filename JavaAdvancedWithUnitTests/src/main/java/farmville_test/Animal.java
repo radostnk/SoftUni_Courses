@@ -1,4 +1,4 @@
-package farmville;
+package farmville_test;
 
 public class Animal {
     private String type;
